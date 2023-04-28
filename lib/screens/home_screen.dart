@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phone_book_app/constants/custom_color.dart';
+import 'package:phone_book_app/screens/add_edit_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -12,6 +13,19 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: CustomColor.greenColor,
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return AddEditScreen();
+              },
+            ),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
       backgroundColor: CustomColor.blackColor,
       appBar: AppBar(
         backgroundColor: CustomColor.blackColor,
@@ -29,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SafeArea(
         child: ListView.builder(
-          itemCount: 10,
+          itemCount: 15,
           itemBuilder: (context, index) {
             return ListTile(
               leading: CircleAvatar(
