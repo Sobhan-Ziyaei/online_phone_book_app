@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phone_book_app/constants/custom_color.dart';
 
 class MyButton extends StatelessWidget {
   final VoidCallback onPressed;
@@ -9,7 +10,7 @@ class MyButton extends StatelessWidget {
     required this.child,
     required this.width,
     required this.onPressed,
-    this.color = Colors.redAccent,
+    this.color = CustomColor.greenColor,
   });
 
   @override
@@ -17,7 +18,7 @@ class MyButton extends StatelessWidget {
     return AnimatedContainer(
       width: width,
       height: 50.0,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(15.0),
         child: ElevatedButton(

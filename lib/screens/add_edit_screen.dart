@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:phone_book_app/constants/custom_color.dart';
+import 'package:phone_book_app/widgets/MyButton.dart';
 import 'package:phone_book_app/widgets/MyTextField.dart';
+import 'package:phone_book_app/widgets/PersonalTextField.dart';
 
 class AddEditScreen extends StatefulWidget {
-  static final TextEditingController nameController = TextEditingController();
-  static final TextEditingController numberController = TextEditingController();
+  static TextEditingController nameController = TextEditingController();
+  static TextEditingController numberController = TextEditingController();
 
   AddEditScreen({Key? key}) : super(key: key);
 
@@ -32,20 +34,32 @@ class _AddEditScreenState extends State<AddEditScreen> {
               const SizedBox(
                 height: 30,
               ),
-              MyTextField(
+              PersonalTextField(
+                labelText: 'نام',
+                inputType: TextInputType.name,
                 controller: AddEditScreen.nameController,
-                errorText: 'errorText',
                 hintText: 'نام',
               ),
               const SizedBox(
                 height: 30,
               ),
-              MyTextField(
-                controller: AddEditScreen.nameController,
-                errorText: 'errorText',
-                hintText: 'شماره',
-                
+              PersonalTextField(
+                labelText: 'شماره همراه',
+                inputType: TextInputType.number,
+                controller: AddEditScreen.numberController,
+                hintText: 'شماره همراه',
               ),
+              const SizedBox(
+                height: 30,
+              ),
+              MyButton(
+                child: Text(
+                  'اضافه کردن',
+                  style: const TextStyle(fontSize: 15),
+                ),
+                width: 150,
+                onPressed: () {},
+              )
             ],
           ),
         ),
