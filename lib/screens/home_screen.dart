@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:phone_book_app/constants/custom_color.dart';
 import 'package:phone_book_app/screens/add_edit_screen.dart';
+import 'package:phone_book_app/utils/network.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -16,6 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: CustomColor.greenColor,
         onPressed: () {
+          //Test getData from API
+          //print(Network.contact[0].fullname);
+          //
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) {
