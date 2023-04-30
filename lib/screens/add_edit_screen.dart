@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phone_book_app/constants/custom_color.dart';
+import 'package:phone_book_app/utils/network.dart';
 import 'package:phone_book_app/widgets/MyButton.dart';
 import 'package:phone_book_app/widgets/MyTextField.dart';
 import 'package:phone_book_app/widgets/PersonalTextField.dart';
@@ -64,7 +65,9 @@ class _AddEditScreenState extends State<AddEditScreen> {
                   ),
                   width: 150,
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {}
+                    if (formKey.currentState!.validate()) {
+                      Network.postData(fullName: AddEditScreen.nameController.text, phone: AddEditScreen.numberController.text);
+                    }
                   },
                 )
               ],

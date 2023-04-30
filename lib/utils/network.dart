@@ -17,4 +17,13 @@ class Network {
       contact.add(element);
     });
   }
+
+  //
+  //Post Data
+  static Future<void> postData(
+      {required String fullName, required String phone}) async {
+    Contact contact = Contact(phone: phone, fullName: fullName);
+    await Dio()
+        .post('https://retoolapi.dev/IslnAu/contacts', data: contact.toJson());
+  }
 }
