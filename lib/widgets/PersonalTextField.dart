@@ -6,10 +6,13 @@ class PersonalTextField extends StatelessWidget {
   final TextInputType inputType;
   final TextEditingController controller;
   final String hintText;
+  final String errorText;
+
   final String labelText;
   //
   const PersonalTextField({
     Key? key,
+    required this.errorText,
     required this.labelText,
     required this.inputType,
     required this.controller,
@@ -18,7 +21,13 @@ class PersonalTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return errorText;
+        }
+        return null;
+      },
       style: const TextStyle(
         color: Colors.white,
       ),

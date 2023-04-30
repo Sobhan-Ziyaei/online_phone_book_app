@@ -15,52 +15,60 @@ class AddEditScreen extends StatefulWidget {
 }
 
 class _AddEditScreenState extends State<AddEditScreen> {
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
+    return Form(
+      key: formKey,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: CustomColor.blackColor,
+          elevation: 0,
+          title: const Text('مخاطب جدید'),
+          centerTitle: true,
+          automaticallyImplyLeading: true,
+        ),
         backgroundColor: CustomColor.blackColor,
-        elevation: 0,
-        title: const Text('مخاطب جدید'),
-        centerTitle: true,
-        automaticallyImplyLeading: true,
-      ),
-      backgroundColor: CustomColor.blackColor,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 30,
-              ),
-              PersonalTextField(
-                labelText: 'نام',
-                inputType: TextInputType.name,
-                controller: AddEditScreen.nameController,
-                hintText: 'نام',
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              PersonalTextField(
-                labelText: 'شماره همراه',
-                inputType: TextInputType.number,
-                controller: AddEditScreen.numberController,
-                hintText: 'شماره همراه',
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              MyButton(
-                child: Text(
-                  'اضافه کردن',
-                  style: const TextStyle(fontSize: 15),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 30,
                 ),
-                width: 150,
-                onPressed: () {},
-              )
-            ],
+                PersonalTextField(
+                  errorText: 'لطفا نام را وارد کنید',
+                  labelText: 'نام',
+                  inputType: TextInputType.name,
+                  controller: AddEditScreen.nameController,
+                  hintText: 'نام',
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                PersonalTextField(
+                  errorText: 'لطفا شماره همراه را وارد کنید',
+                  labelText: 'شماره همراه',
+                  inputType: TextInputType.number,
+                  controller: AddEditScreen.numberController,
+                  hintText: 'شماره همراه',
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                MyButton(
+                  child: Text(
+                    'اضافه کردن',
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                  width: 150,
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {}
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),
